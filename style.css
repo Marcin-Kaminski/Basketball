@@ -1,0 +1,230 @@
+body {
+    font-family: 'PT Sans', sans-serif;
+    background: wheat;
+}
+.box {
+    position: relative;
+    margin-left: 25%;
+    margin-top: 10%;
+    width: 350px;
+    height: 500px;
+    background: rgba(254,253,255,255);
+    border-radius: 25px;
+    border: black solid 1px;
+    padding-bottom: 40px;
+}
+.accurate-throw-button {
+    background: rgba(123,206,180,255);
+    width: 120px;
+    height: 40px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    float: left;
+    margin: 20px 0 0 40px;
+    font-size: 15px;
+    color: white;
+}
+.missed-throw-button {
+    background: rgba(200,111,146,255);
+    width: 120px;
+    height: 40px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    float: right;
+    font-size: 15px;
+    margin: 20px 40px 0 0;
+    color: white;
+}
+.logo {
+    margin: 50px 0 50px 88px;
+}
+.clearfix {
+    clear: both;
+}
+.accurate-shots {
+    font-size: 50px;
+    float: left;
+    width: 40%;
+    text-align: right;
+}
+.separator {
+    font-size: 50px;
+    width: 20%;
+    float: left;
+    text-align: center;
+}
+.amount-of-shots-thrown {
+    font-size: 50px;
+    float: right;
+    width: 40%;
+}
+.accuracy {
+    float: left;
+    font-size: 40px;
+    margin: 25px 0 0 40px;
+}
+.percentage {
+    float: left;
+    font-size: 40px;
+    margin: 25px 0 0 20px;
+}
+@media(max-width: 600px) {
+    body {
+        background-color: white;
+    }
+    .box {
+        margin: 1px auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: none;
+
+    }
+    .z-index-accurate-shots-data {
+        left: 31px!important;
+        top: 277px!important;
+    }
+    .z-index-inaccurate-shots-data {
+        left: 130px!important;
+        top: 277px!important;
+    }
+    .z-index-all-shots-data {
+        left: 261px!important;
+        top: 277px!important;
+    }
+    .close-button {
+        top: -10px!important;
+        left: 299px!important;
+    }
+}
+.statistics {
+    background: black;
+    width: 120px;
+    height: 40px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    float: left;
+    margin: 20px 0 0 40px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.save-data-to-db {
+    background: black;
+    width: 120px;
+    height: 40px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    float: right;
+    font-size: 15px;
+    margin: 20px 40px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.shots-data {
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+.accurate-shots-data {
+    width: 33%;
+    text-align: center;
+    float: left;
+    font-size: 25px;
+}
+.inaccurate-shots-data {
+    width: 33%;
+    text-align: center;
+    float: left;
+    font-size: 25px;
+}
+.all-shots-data {
+    width: 33%;
+    text-align: center;
+    float: left;
+    font-size: 25px;
+}
+.z-index-accurate-shots-data {
+    z-index: 2;
+    position: absolute;
+    font-size: 16px;
+    left: 31px;
+    top: 282px;
+}
+.z-index-inaccurate-shots-data {
+    z-index: 2;
+    position: absolute;
+    font-size: 16px;
+    left: 133px;
+    top: 282px;
+}
+.z-index-all-shots-data {
+    z-index: 2;
+    position: absolute;
+    font-size: 16px;
+    left: 261px;
+    top: 282px;
+}
+.accuracy-data {
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+    margin: 20px 0 20px 0;
+    font-weight: bold;
+
+}
+.shots-made-slash-all{
+    width: 50%;
+    text-align: center;
+    float: left;
+    font-size: 25px;
+}
+.average-accuracy-data {
+    width: 50%;
+    text-align: center;
+    float: left;
+    font-size: 25px;
+}
+.best-day {
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+    margin: 20px 0 20px 0;
+    font-weight: bold;
+}
+.best-day-score {
+    width: 33%;
+    text-align: center;
+    float: left;
+    font-size: 22px;
+}
+.best-day-percentage {
+    width: 33%;
+    text-align: center;
+    float: left;
+    font-size: 22px;
+}
+.best-day-date {
+    width: 33%;
+    text-align: center;
+    float: left;
+    font-size: 22px;
+}
+.close-button {
+    cursor: pointer;
+    position: absolute;
+    z-index: 2;
+    top: 14px;
+    left: 316px;
+}

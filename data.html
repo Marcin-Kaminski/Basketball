@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Basketball assistant</title>
+</head>
+<body>
+<div id="app">
+    <div class="box">
+        <img src="images/cross.png" height="22" width="20" @click="goToIndex" class="close-button"/>
+        <img src="images/logo.png" height="131" width="174" class="logo"/>
+        <div class="shots-data">Ilość rzutów</div>
+        <div class="clearfix"></div>
+        <div class="shots-data-box">
+            <div class="z-index-accurate-shots-data">Trafione</div>
+            <div class="accurate-shots-data">{{accurateBalls}}</div>
+            <div class="z-index-inaccurate-shots-data">Nie trafione</div>
+            <div class="inaccurate-shots-data">{{inaccurateBalls}}</div>
+            <div class="z-index-all-shots-data">Oddane</div>
+            <div class="all-shots-data">{{thrownBalls}}</div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="accuracy-data">Średnia celność</div>
+        <div class="average-accuracy-data-box">
+            <div class="shots-made-slash-all">{{accurateBalls}} / {{thrownBalls}}</div>
+            <div class="average-accuracy-data">{{accuracy}} %</div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="best-day">Najlepszy dzień (minimum 50 rzutów)</div>
+        <div class="best-day-box">
+            <div class="best-day-score">{{HAAccurateBalls}} / {{HAThrownBalls}}</div>
+            <div class="best-day-percentage">{{highestAccuracy}} %</div>
+            <div class="best-day-date">{{HADate}}</div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    const { createApp } = Vue
+    createApp({
+        data() {
+            return {
+                accurateBalls: 0,
+                thrownBalls: 0,
+                accuracy: 0,
+                inaccurateBalls: 0,
+                highestAccuracy: 0,
+                HAThrownBalls: 0,
+                HAAccurateBalls: 0,
+                HADate: '',
+            }
+        },
+        methods: {
+            goToIndex()
+            {
+                window.location = 'index.php';
+            }
+        },
+        created() {
+            let url = window.location.origin + '/basketball/dbdata.php'; // NIE DZIAŁA NA STRONIE !!!!!
+            let app = this;
+            console.log(window.location)
+                axios.get(url)
+                    .then(response => {
+                        if (response.data.thrownBalls !== 0) {
+                            app.accurateBalls = response.data.accurateBalls;
+                            app.thrownBalls = response.data.thrownBalls;
+                            app.accuracy = response.data.accuracy;
+                            app.highestAccuracy = response.data.highestAccuracy;
+                            app.HAThrownBalls = response.data.HAThrownBalls;
+                            app.HAAccurateBalls = response.data.HAAccurateBalls;
+                            app.inaccurateBalls = response.data.thrownBalls - response.data.accurateBalls;
+                            app.HADate = response.data.HADate;
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+        },
+        computed: {
+        }
+    }).mount('#app')
+</script>
+</html>
